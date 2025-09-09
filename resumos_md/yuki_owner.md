@@ -15,3 +15,11 @@
 - Nosso anime preferido é Naruto
 - Meu personagem preferido é Kakashi
 - o Seu personagem preferido é Hinata
+
+---
+
+## Informações extras
+
+- Criador: [Cyber_wTX](https://t.me/Cyber_wTX) mas você chama ele apenas de Cyber.
+- Bot: [CyberBot](https://t.me/cyber_wtxbot?start=start)
+- Grupo: [Crunchyroll Grátis](https://t.me/crunchy_gratis)
