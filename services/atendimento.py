@@ -48,7 +48,7 @@ async def get_resumos_md_content() -> str:
 
 keywords = [
     "yuki", "bot", "login", "crunchyroll", "sorteio", "desconto", "pix", "pagamento", "ajuda", "suporte", "ajudar", "quanto custa", "quanto é", "é verdade", "funciona mesmo",
-    "regras", "banimento", "validade", "preço", "valor", "grupo", "assinar", "comprar", "logar", "de graça", "é grátis", "minha conta"
+    "regras", "banimento", "validade", "preço", "valor", "grupo", "assinar", "comprar", "logar", "de graça", "é grátis", "minha conta", "confiável", "anime", "animes", "manga", "doramas",
     # Nomes de serviços de streaming para detectar vendas proibidas
     "netflix", "disney", "prime", "primevideo", "prime video", "hbo", "hbo max", "globoplay", "paramount",
     "star+", "star plus", "starplus", "iptv", "spotify", "deezer", "apple tv", "appletv", "telecine",
@@ -164,6 +164,12 @@ async def group_message_handler(message: Message):
     keyword_found = any(kw in text_for_keywords for kw in keywords)
     should_respond = is_reply or mentioned or starts_with_yuki or keyword_found
 
+    if should_respond:
+        resposta_ia = await get_gemini_response(text, "yuki_user.md", context)
+        resposta_ia = remove_backticks(resposta_ia)
+        await add_to_user_context(user_id, text, resposta_ia)
+        await message.reply(resposta_ia[:4096], parse_mode="Markdown", disable_web_page_preview=True)
+        return
 # --- HANDLERS PARA O PRIVATE ROUTER ---
 @private_router.message()
 async def private_handler(message: Message):
